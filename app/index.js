@@ -44,10 +44,8 @@ fastify.get('/', function (request, reply) {
   })
 })
 
-fastify.listen(port, '0.0.0.0', async function (error, address) {
-    if (error) {
-      fastify.log.error(error)
-      process.exit(1)
-    }
-    fastify.log.info(`server listening on ${address}`)
-  })
+fastify.listen({ port, host: '0.0.0.0' }, function (error) {
+  if (error) {
+    throw error
+  }
+})
